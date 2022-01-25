@@ -8,14 +8,14 @@ Will use a simple machine learning example, multivariate linear regression, to e
 ### Multivariate linear regression
 
 Given a data set $ \{y_i, x_{i,1}, x_{i,2}, ..., x_{i,p-1}\}$ of $n$ statistical unit, the model assumes that the relationship between the variable $y_i$ and the $x_i$ vector is given by the relationship :
-$$y_i =  \sum_{j=1}^{p-1}x_{i,j}w_j + w_p + \epsilon_i $$
+$y_i =  \sum_{j=1}^{p-1}x_{i,j}w_j + w_p + \epsilon_i $
 where $w$ is the $p$-dimensional parameter vector and  $\epsilon_i$ is the error term.
 We will write $X \in \mathbb{R}^{n\times p}$ the design matrix, such that 
-$$\forall i=1,...,n ~~ \forall j=1,...,p-1 ~~~~ X_{i,j}=x_{i,j}$$ $$\forall i = 1,...,n ~~~~ X_{i,p} = 1$$
+$\forall i=1,...,n ~~ \forall j=1,...,p-1 ~~~~ X_{i,j}=x_{i,j}$ $\forall i = 1,...,n ~~~~ X_{i,p} = 1$
 We can now simply write $Y = Xw + \epsilon$
 
 So, we are looking for the $w$ vector that minimize the following loss function L :
-$$ L = \frac{1}{n}\sum_{i=1}^n (y_i - \sum_{j=1}^{p}X_{i,j}w_j)^2 $$
+$ L = \frac{1}{n}\sum_{i=1}^n (y_i - \sum_{j=1}^{p}X_{i,j}w_j)^2 $$
 
 The partial derivative of $L$ with respect to $w_k$ is :
 $$ \frac{\partial L}{\partial w_k} = \frac{2}{n} \sum_{i=1}^n X_{i,k} (y_i - \sum_{j=1}^{p}X_{i,j}w_j)$$
