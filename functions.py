@@ -1,8 +1,16 @@
 # -*- coding: utf-8 -*-
 """
-Created on Sun Dec 26 16:11:04 2021
+Simple implementations of stochastic gradient descent algorithms
+Created by Aurélien Lécuyer and Jérémy Pennont, January 2022
+Applied Mathematics, Polytech Lyon
 
-@author: alecu
+
+functions to generate data inputs and outputs
+loss function (and its gradient) for multivariate linear regressions
+classic optimization algorithms:
+    Newton, Gradient descent
+stochastic optimization algorithms:
+    Robbins-Monroe, SGD, SAG, SAGA
 """
 import random as rd
 import numpy as np
@@ -180,7 +188,7 @@ def gradL_SGD(w,i,xij,yi):
     return dw
 
 
-def d2L(w,xij,yi):
+def hessian_L(w,xij,yi):
     """
     Hessian of the loss function L
 
@@ -261,7 +269,7 @@ def Newton(f,df,alpha,xij,yi,theta0,epsilon=1e-5,itemax=1000):
     return theta,ite,save 
 
 
-def GD(f,df,xij,yi,theta0,epsilon=1e-5,eta=0.01,itemax=10000):
+def GD(f,df,xij,yi,theta0,epsilon=1e-5,eta=0.01,itemax=1000):
     """
     Gradient descent algorithm
     
@@ -309,7 +317,7 @@ def GD(f,df,xij,yi,theta0,epsilon=1e-5,eta=0.01,itemax=10000):
 
 
 #Robbins-Monroe
-def RM(f,alpha,xij,yi,theta0,epsilon=1e-5,eta=0.01,b=1,itemax=100000):
+def RM(f,alpha,xij,yi,theta0,eta=0.01,b=1,itemax=100000):
     """
     Robbins-Monroe algorithm
     
@@ -348,7 +356,7 @@ def RM(f,alpha,xij,yi,theta0,epsilon=1e-5,eta=0.01,b=1,itemax=100000):
     theta = theta0
     ite = 1
     save = [theta]
-    while((norm(f(theta,xij,yi)-alpha) > epsilon)and (ite<itemax)):
+    while(ite<itemax):
         an = (eta/ite)**b
         theta = theta - an * (f(theta,xij,yi)-alpha)
         save.append(theta)
@@ -584,7 +592,7 @@ def SAGA2(f,df,xij,yi,theta0,eta=0.001,lambda0=0,itemax=100000,print_time=0):
             ite=ite+1
         ti = time.time() - start_time
         if(print_time):
-            print("ite = ", ite, "  -  remaining time = ",round(ti*100/(i+1)-ti,2),"s  -  average derivative = ",np.mean(table),'\n')
+            print("ite = ", ite, "  -  remaining time = ",round(ti*round(itemax/n)/(i+1)-ti,2),"s  -  average derivative = ",np.mean(table),'\n')
             #print(np.mean(table),'\n')
         save.append(theta)
     return theta,ite,save
