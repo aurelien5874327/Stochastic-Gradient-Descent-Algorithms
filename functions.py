@@ -10,7 +10,7 @@ loss function (and its gradient) for multivariate linear regressions
 classic optimization algorithms:
     Newton, Gradient descent
 stochastic optimization algorithms:
-    Robbins-Monroe, SGD, SAG, SAGA
+    Robbins-Monro, SGD, SAG, SAGA
 """
 import random as rd
 import numpy as np
@@ -316,10 +316,10 @@ def GD(f,df,xij,yi,theta0,epsilon=1e-5,eta=0.01,itemax=1000):
 
 
 
-#Robbins-Monroe
+#Robbins-Monro
 def RM(f,alpha,xij,yi,theta0,eta=0.01,b=1,itemax=100000):
     """
-    Robbins-Monroe algorithm
+    Robbins-Monro algorithm
     
     Parameters
     ----------
