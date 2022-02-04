@@ -324,17 +324,15 @@ def RM(f,alpha,xij,yi,theta0,eta=0.01,b=1,itemax=100000):
     Parameters
     ----------
     f : function
-        function to minimize
-    df : function
-        derivative of f
+        function for which will find theta such that f(theta)=alpha
+    alpha : np.array()
+        alpha for which will find theta such that f(theta)=alpha
     xij : np.array()
         data inputs (size nxp)
     yi : np.array()
         Y vector (size n)
     theta0 : np.array()
         initial guess for theta (size p)
-    epsilon : real, optional
-        DESCRIPTION. The default is 1e-5.
     eta : real, optional
         learning rate. The default is 0.01.
     b : np.array(), optional
