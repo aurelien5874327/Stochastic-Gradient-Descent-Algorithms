@@ -223,7 +223,7 @@ def hessian_L(w,xij,yi):
 
 #algorithmes de résolution
 
-def Newton(f,df,alpha,xij,yi,theta0,epsilon=1e-5,itemax=1000):
+def Newton(f,df,alpha,xij,yi,theta0,epsilon=1e-5,itemax=20):
     """
     Newton's method
 

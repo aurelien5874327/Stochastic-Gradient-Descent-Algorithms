@@ -10,8 +10,9 @@ import random as rd
 import numpy as np
 import matplotlib.pyplot as plt
 import time
+from numpy.linalg import norm 
 
-from functions import Y_generation, L, gradL, hessian_L, gradL_RM, gradL_SGD
+from functions import Y_generation, gradL, hessian_L, gradL_RM, gradL_SGD
 from functions import Newton, RM, GD, SGD, SAG, SAGA, SAGA2
 
 
@@ -57,7 +58,7 @@ time0 = time.time()
 
 #theta,ite,save = Newton(gradL,hessian_L,p*[0],xij,yi,theta0,epsilon)
 
-theta,ite,save = GD(gradL,xij,yi,theta0,epsilon,eta=0.01)
+#theta,ite,save = GD(gradL,xij,yi,theta0,epsilon,eta=0.01)
 
 #theta,ite,save = RM(gradL_RM,p*[0],xij,yi,theta0,eta=0.01,b=0.5,itemax=1000)
 
@@ -67,13 +68,14 @@ theta,ite,save = GD(gradL,xij,yi,theta0,epsilon,eta=0.01)
 
 #theta,ite,save = SAGA(gradL_SGD,xij,yi,theta0,eta=0.001,lambda0=0,itemax=50000)
 
-#theta,ite,save = SAGA2(gradL_SGD,xij,yi,theta0,eta=0.001,lambda0=0,itemax=50000,print_time=1)
+theta,ite,save = SAGA2(gradL_SGD,xij,yi,theta0,eta=0.001,lambda0=0,itemax=50000,print_time=1)
 
 t2 = time.time() - time0
 
 print('number of iterations : ',ite)
-print('theta : ',theta)
 print('exectution time : ',t2)
+print('1/p * ||theta-w|| : ', norm(theta-w))
+print('theta : ',theta)
 
 #plot theta evolution
 plt.plot(range(len(save)),save)
