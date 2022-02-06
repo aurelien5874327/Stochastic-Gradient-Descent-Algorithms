@@ -57,17 +57,17 @@ time0 = time.time()
 
 #theta,ite,save = Newton(gradL,hessian_L,p*[0],xij,yi,theta0,epsilon)
 
-#theta,ite,save = GD(L,gradL,xij,yi,theta0,epsilon,eta=0.01)
+theta,ite,save = GD(gradL,xij,yi,theta0,epsilon,eta=0.01)
 
 #theta,ite,save = RM(gradL_RM,p*[0],xij,yi,theta0,eta=0.01,b=0.5,itemax=1000)
 
-#theta,ite,save = SGD(L,gradL_SGD,xij,yi,theta0,eta=0.0001)
+#theta,ite,save = SGD(gradL_SGD,xij,yi,theta0,eta=0.0001)
 
-#theta,ite,save = SAG(L,gradL_SGD,xij,yi,theta0,epsilon,eta=0.001)
+#theta,ite,save = SAG(gradL_SGD,xij,yi,theta0,epsilon,eta=0.001)
 
-#theta,ite,save = SAGA(L,gradL_SGD,xij,yi,theta0,eta=0.001,lambda0=0,itemax=50000)
+#theta,ite,save = SAGA(gradL_SGD,xij,yi,theta0,eta=0.001,lambda0=0,itemax=50000)
 
-theta,ite,save = SAGA2(L,gradL_SGD,xij,yi,theta0,eta=0.001,lambda0=0,itemax=50000,print_time=1)
+#theta,ite,save = SAGA2(gradL_SGD,xij,yi,theta0,eta=0.001,lambda0=0,itemax=50000,print_time=1)
 
 t2 = time.time() - time0
 

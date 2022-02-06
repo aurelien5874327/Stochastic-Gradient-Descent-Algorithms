@@ -269,14 +269,12 @@ def Newton(f,df,alpha,xij,yi,theta0,epsilon=1e-5,itemax=1000):
     return theta,ite,save 
 
 
-def GD(f,df,xij,yi,theta0,epsilon=1e-5,eta=0.01,itemax=1000):
+def GD(df,xij,yi,theta0,epsilon=1e-5,eta=0.01,itemax=1000):
     """
     Gradient descent algorithm
     
     Parameters
     ----------
-    f : function
-        function to minimize
     df : function
         derivative of f
     xij : np.array()
@@ -364,14 +362,12 @@ def RM(f,alpha,xij,yi,theta0,eta=0.01,b=1,itemax=100000):
 
 
 #descente de gradient stochastique
-def SGD(f,df,xij,yi,theta0,eta=0.01,itemax=100000):
+def SGD(df,xij,yi,theta0,eta=0.01,itemax=100000):
     """
     Stochastic gradient descent algorithm
     
     Parameters
     ----------
-    f : function
-        function to minimize
     df : function
         derivative of f
     xij : np.array()
@@ -417,14 +413,12 @@ def SGD(f,df,xij,yi,theta0,eta=0.01,itemax=100000):
     return theta,ite,save 
 
 #stochastic average gradient
-def SAG(f,df,xij,yi,theta0,epsilon=1e-5,eta=0.01,itemax=100000):
+def SAG(df,xij,yi,theta0,epsilon=1e-5,eta=0.01,itemax=100000):
     """
     Stochastic average gradient algorithm
     
     Parameters
     ----------
-    f : function
-        function to minimize
     df : function
         derivative of f
     xij : np.array()
@@ -469,14 +463,12 @@ def SAG(f,df,xij,yi,theta0,epsilon=1e-5,eta=0.01,itemax=100000):
         save.append(theta)
     return theta,ite,save
 
-def SAGA(f,df,xij,yi,theta0,eta=0.001,lambda0=0,itemax=100000):
+def SAGA(df,xij,yi,theta0,eta=0.001,lambda0=0,itemax=100000):
     """
     SAGA algorithm
     
     Parameters
     ----------
-    f : function
-        function to minimize
     df : function
         derivative of f
     xij : np.array()
@@ -529,14 +521,12 @@ def SAGA(f,df,xij,yi,theta0,eta=0.001,lambda0=0,itemax=100000):
         save.append(theta)
     return theta,ite,save
 
-def SAGA2(f,df,xij,yi,theta0,eta=0.001,lambda0=0,itemax=100000,print_time=0):
+def SAGA2(df,xij,yi,theta0,eta=0.001,lambda0=0,itemax=100000,print_time=0):
     """
     SAGA algorithm, with the possibility to print remaining time during execution
     
     Parameters
     ----------
-    f : function
-        function to minimize
     df : function
         derivative of f
     xij : np.array()
